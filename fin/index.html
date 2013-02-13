@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <script src="js/lib/jquery-1.9.1.js"></script>
+    <script src="js/lib/underscore.js"></script>
+    <script src="js/lib/backbone.js"></script>
+
+    <script src="js/app/model/score.js"></script>
+    <script src="js/app/view/table.js"></script>
+    <script src="js/app/view/input_form.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+
+<form id="inputForm" action="javascript:void(0)">
+    <button class="addButton">追加</button>
+</form>
+
+<div id="chart">
+
+</div>
+
+<div id="table">
+
+</div>
+
+
+<script type="text/template" id="tableTpl">
+    <table border="1">
+        <caption>得点表</caption>
+        <thead>
+            <tr>
+                <th>名前</th><th>JavaScript</th><th>C++</th><th>Ruby</th><th>PHP</th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+        <tfoot></tfoot>
+    </table>
+</script>
+
+<script type="text/template" id="tableRowTpl">
+    <tr>
+        <td><%- name %></td>
+        <td><%- js %></td>
+        <td><%- cpp %></td>
+        <td><%- ruby %></td>
+        <td><%- php %></td>
+    </tr>
+</script>
+
+
+</body>
+</html>
