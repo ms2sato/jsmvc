@@ -20,7 +20,18 @@
         },
 
         addScore:function(){
+
+            var self = this;
+            function setInteger(score, lang){
+                score.set(lang, parseInt(self.$('input[name=' + lang + ']').val()));
+            }
+
             var score = new MVC.Score();
+            score.set('name', this.$('input[name=name]').val());
+            setInteger(score, 'js');
+            setInteger(score, 'cpp');
+            setInteger(score, 'ruby');
+            setInteger(score, 'php');
 
             //値が追加された。addイベントが発火する
             MVC.app.model.scoreCollection.add(score);

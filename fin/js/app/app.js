@@ -15,6 +15,7 @@
     var App = function(){
         this.model = {};
         this.view = {};
+        this.status = {};
 
         this.model.scoreCollection = new MVC.ScoreCollection();
     }
@@ -31,12 +32,16 @@
                 el: $("#table")
             });
 
+            this.view.chart = new MVC.ChartView({
+                model: this.model.scoreCollection,
+                el: $("#chart")
+            });
+
             this.view.inputForm = new MVC.InputFormView({
                 model: this.model.scoreCollection,
                 el: $("#inputForm")
             });
         }
-
     });
 
     global.MVC.App = App;
