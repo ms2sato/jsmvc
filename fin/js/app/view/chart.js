@@ -23,6 +23,7 @@
             console.log('chart.render');
             this.$el.empty();
             this.refreshChart();
+            return this;
         },
 
         refreshChart:function(){

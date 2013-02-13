@@ -31,6 +31,7 @@
             console.log('table.render');
             this.$el.empty();
             this.appendTable();
+            return this;
         },
 
         appendTable:function(){
