@@ -43,12 +43,17 @@
         },
 
         addNewRow:function(model){
-            this.addRow(this.$('tbody'), model);
+            return this.addRow(this.$('tbody'), model);
         },
 
         addRow: function(tbody, score){
-            tbody.append(this.tableRowTpl(score.toJSON()));
+            return tbody.append(this.tableRowTpl(score.toJSON()));
         }
+
+        //Q3: 各行に「削除」ボタンをつけて、ボタンを押したら行が削除されるようにしましょう
+        // ヒント:
+        // ボタンを押されたら、モデルを更新します。
+        // 更新されたモデルのremoveイベントで、表示を更新します。
 
     });
 
