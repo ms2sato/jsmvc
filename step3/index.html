@@ -9,16 +9,15 @@
     <script src="js/lib/backbone.js"></script>
 
     <script src="js/app/model/score.js"></script>
-    <script src="js/app/view/table.js"></script>
-    <script src="js/app/view/chart.js"></script>
-    <script src="js/app/view/input_form.js"></script>
-    <script src="js/app/app.js"></script>
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="js/main.js"></script>
+
+    <script src="js/app/app.js"></script>
+    <script src="js/app/view/input_form.js"></script>
+
+    <script src="js/app/view/table.js"></script>
+
 </head>
 <body>
-
 <form id="inputForm" action="javascript:void(0)">
     名前:<input type="text" name="name" value="だれか">
     JavaScript:<input type="number" name="js" value="50">
@@ -26,11 +25,8 @@
     Ruby:<input type="number" name="ruby" value="50">
     PHP:<input type="number" name="php" value="50">
     <button class="addButton">追加</button>
+    <button class="clearButton">クリア</button>
 </form>
-
-<div id="chart">
-
-</div>
 
 <div id="table">
 
@@ -60,7 +56,6 @@
         <td><%- php %></td>
     </tr>
 </script>
-
 
 </body>
 </html>

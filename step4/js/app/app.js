@@ -21,9 +21,9 @@
     }
 
     /*
-     _.extendを利用すれば
-     App.prototype.myFunction = function(){}
-     をまとめて複数定義できる
+        _.extendを利用すれば
+         App.prototype.myFunction = function(){}
+         をまとめて複数定義できる
      */
 
     _.extend(App.prototype, {
@@ -38,17 +38,13 @@
                 el: $("#table")
             });
 
-            this.view.chart = new MVC.ChartView({
-                model: this.model.scoreCollection,
-                el: $("#chart")
-            });
-
             this.view.inputForm = new MVC.InputFormView({
                 model: this.model.scoreCollection,
                 el: $("#inputForm")
             });
         }
     });
+
 
     global.MVC.App = App;
 

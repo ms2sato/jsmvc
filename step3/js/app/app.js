@@ -15,33 +15,33 @@
     var App = function(){
         this.model = {};
         this.view = {};
-        this.status = {};
-
-        this.model.scoreCollection = new MVC.ScoreCollection();
     }
 
     /*
-     _.extendを利用すれば
-     App.prototype.myFunction = function(){}
-     をまとめて複数定義できる
+        _.extendを利用すれば
+         App.prototype.myFunction = function(){}
+         をまとめて複数定義できる
      */
 
     _.extend(App.prototype, {
 
         init:function(){
 
-            // ここで作成しているのは今回はアプリが小さなため。
-            // 大規模なアプリでは必要なタイミングで作成する方が良い。
+            //モデルの変更をハンドルできることを確認するよ！
+            var scoreCollection = new MVC.ScoreCollection();
+            scoreCollection.on('add', function(score){
+                alert('add score: ' + score.get('name'));
+            });
+
+            this.model.scoreCollection = scoreCollection;
 
             this.view.table = new MVC.TableView({
                 model: this.model.scoreCollection,
                 el: $("#table")
             });
 
-            this.view.chart = new MVC.ChartView({
-                model: this.model.scoreCollection,
-                el: $("#chart")
-            });
+            // ここで作成しているのは今回はアプリが小さなため。
+            // 大規模なアプリでは必要なタイミングで作成する方が良い。
 
             this.view.inputForm = new MVC.InputFormView({
                 model: this.model.scoreCollection,
@@ -49,6 +49,7 @@
             });
         }
     });
+
 
     global.MVC.App = App;
 
