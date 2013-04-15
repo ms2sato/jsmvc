@@ -19,9 +19,13 @@
             this.tableRowTpl = _.template(tableRowStr);
 
 
-            //モデルのイベント監視
+            //モデルのイベント監視  this.model は ScoreCollectionのインスタンスです。
             this.listenTo(this.model, 'add', this.addNewRow);
             this.listenTo(this.model, 'remove', this.removeRow);
+            /*
+             * var self = this;
+             * this.model.on('remove', function(score){ self.removeRow(score); }
+             */
 
             //初期の描画
             this.render();
@@ -36,10 +40,9 @@
 
         appendTable:function(){
             var self = this;
-            var table = this.$el.append(this.tableTpl({}));
-            var tbody = table.find('tbody');
+            this.$el.append(this.tableTpl({}));
             this.model.forEach(function(score){
-                self.addRow(tbody, score);
+                self.addNewRow(score);
             });
         },
 
@@ -53,7 +56,7 @@
         },
 
         addRow: function(tbody, score){
-            return tbody.append(this.tableRowTpl(score.toJSON()));
+            return $($.parseHTML(this.tableRowTpl(score.toJSON()))).appendTo(tbody);
         },
 
         removeRow:function(score){

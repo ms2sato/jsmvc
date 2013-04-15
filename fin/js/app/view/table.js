@@ -19,9 +19,13 @@
             this.tableRowTpl = _.template(tableRowStr);
 
 
-            //モデルのイベント監視
-            this.listenTo(this.model, "change", this.render);
-            this.listenTo(this.model, "add", this.addNewRow);
+            //モデルのイベント監視  this.model は ScoreCollectionのインスタンスです。
+            this.listenTo(this.model, 'add', this.addNewRow);
+            this.listenTo(this.model, 'remove', this.removeRow);
+            /*
+             * var self = this;
+             * this.model.on('remove', function(score){ self.removeRow(score); }
+             */
 
             //初期の描画
             this.render();
@@ -36,19 +40,27 @@
 
         appendTable:function(){
             var self = this;
-            var table = this.$el.append(this.tableTpl({}));
-            var tbody = table.find('tbody');
+            this.$el.append(this.tableTpl({}));
             this.model.forEach(function(score){
-                self.addRow(tbody, score);
+                self.addNewRow(score);
             });
         },
 
-        addNewRow:function(model){
-            this.addRow(this.$('tbody'), model);
+        addNewRow:function(score){
+            var row = this.addRow(this.$('tbody'), score);
+            row.find('.removeButton').click(function(){
+
+                //追加されたscoreを削除
+                MVC.app.model.scoreCollection.remove(score);
+            });
         },
 
         addRow: function(tbody, score){
-            tbody.append(this.tableRowTpl(score.toJSON()));
+            return $($.parseHTML(this.tableRowTpl(score.toJSON()))).appendTo(tbody);
+        },
+
+        removeRow:function(score){
+            this.render();
         }
 
     });

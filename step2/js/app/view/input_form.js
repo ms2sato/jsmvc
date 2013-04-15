@@ -31,8 +31,16 @@
         addScore:function(){
 
             var score = new MVC.Score();
-            score.on('change:name', function(score){
+//            score.on('change:name', function(score){
+//                console.log('change:name:', score.get('name'));
+//            });
+
+            score.on('change', function(score){
                 console.log('change:name:', score.get('name'));
+                console.log('change:cpp:', score.get('cpp'));
+                console.log('change:js:', score.get('js'));
+                console.log('change:ruby:', score.get('ruby'));
+                console.log('change:php:', score.get('php'));
             });
 
             score.set('name', this.$('input[name=name]').val());

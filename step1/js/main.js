@@ -12,9 +12,6 @@ function boot(){
 
 
     var score = new MVC.Score();
-    score.on('change:name', function(score){
-       console.log('change:name:', score.get('name'));
-    });
 
     //セッター的なもの
     score.set('name', 'ジョニー');
