@@ -12,12 +12,14 @@
      */
     var Score = Backbone.Model.extend({
 
-        defaults:{
-            name: 'Noone',
-            js: 50,
-            cpp: 50,
-            ruby: 50,
-            php: 50
+        defaults: function(){
+            return {
+                name: 'Noone',
+                js: 50,
+                cpp: 50,
+                ruby: 50,
+                php: 50
+            }
         }
 
     });

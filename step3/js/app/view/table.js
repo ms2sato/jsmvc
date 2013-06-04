@@ -21,9 +21,9 @@
 
             /*
              * モデルのイベント監視
-             * this.model.on('add', this.addNewRow, this)とほぼ同じ動きだが、remove時にリスナを自動解放してくれる
+             * this.collection.on('add', this.addNewRow, this)とほぼ同じ動きだが、remove時にリスナを自動解放してくれる
              */
-            this.listenTo(this.model, "add", this.addNewRow);
+            this.listenTo(this.collection, "add", this.addNewRow);
 
             //初期の描画
             this.render();
@@ -40,7 +40,7 @@
             var self = this;
             var table = this.$el.append(this.tableTpl({}));
             var tbody = table.find('tbody');
-            this.model.forEach(function(score){
+            this.collection.forEach(function(score){
                 self.addRow(tbody, score);
             });
         },

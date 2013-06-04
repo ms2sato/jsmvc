@@ -21,20 +21,17 @@
 
         addScore:function(){
 
-            var self = this;
-            function setInteger(score, lang){
-                score.set(lang, parseInt(self.$('input[name=' + lang + ']').val()));
-            }
-
             var score = new MVC.Score();
-            score.set('name', this.$('input[name=name]').val());
-            setInteger(score, 'js');
-            setInteger(score, 'cpp');
-            setInteger(score, 'ruby');
-            setInteger(score, 'php');
+            score.set({
+                name: this.$('input[name=name]').val(),
+                js: parseInt(this.$('input[name=js]').val()),
+                cpp: parseInt(this.$('input[name=cpp]').val()),
+                ruby: parseInt(this.$('input[name=ruby]').val()),
+                php: parseInt(this.$('input[name=php]').val())
+            });
 
             //値が追加された。addイベントが発火する
-            MVC.app.model.scoreCollection.add(score);
+            this.collection.add(score);
         }
 
     });

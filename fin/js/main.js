@@ -3,6 +3,7 @@ $(function(){
     boot();
 });
 
+// GoogleChartの準備
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(function(){
     MVC.chartInitialized = true;

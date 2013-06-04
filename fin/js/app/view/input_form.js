@@ -34,7 +34,7 @@
             setInteger(score, 'php');
 
             //値が追加された。addイベントが発火する
-            MVC.app.model.scoreCollection.add(score);
+            this.collection.add(score);
         }
 
     });

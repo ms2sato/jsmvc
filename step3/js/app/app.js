@@ -36,7 +36,7 @@
             this.model.scoreCollection = scoreCollection;
 
             this.view.table = new MVC.TableView({
-                model: this.model.scoreCollection,
+                collection: this.model.scoreCollection,
                 el: $("#table")
             });
 
@@ -44,7 +44,7 @@
             // 大規模なアプリでは必要なタイミングで作成する方が良い。
 
             this.view.inputForm = new MVC.InputFormView({
-                model: this.model.scoreCollection,
+                collection: this.model.scoreCollection,
                 el: $("#inputForm")
             });
         }

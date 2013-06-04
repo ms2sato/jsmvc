@@ -1,21 +1,46 @@
-$(function(){
-    boot();
+/**
+ * ある人の得点のレコード
+ * @constructor
+ */
+var Score = Backbone.Model.extend({
+
+    /**
+     * デフォルトの値を返却します
+     */
+    defaults: function () {
+        return {
+            name: 'Noone',
+            js: 50,
+            cpp: 50,
+            ruby: 50,
+            php: 50
+        };
+    }
+
 });
 
-function boot(){
+/**
+ * Scoreのコレクション
+ * @type {*}
+ */
+var ScoreCollection = Backbone.Collection.extend({
+    model: Score
+});
 
+
+// jQueryのエントリポイント
+$(function () {
     //モデルの変更をハンドルできることを確認するよ！
-    var scoreCollection = new MVC.ScoreCollection();
-    scoreCollection.on('add', function(score){
-       alert('add score: ' + score.get('name'));
+    var scoreCollection = new ScoreCollection();
+    scoreCollection.on('add', function (score) {
+        alert('add score: ' + score.get('name'));
     });
 
 
-    var score = new MVC.Score();
-
+    var score = new Score();
     // Q1の模範解答
     score.on('change:name', function(score){
-       console.log('change:name:', score.get('name'));
+        console.log('change:name:', score.get('name'));
     });
 
     //セッター的なもの
@@ -29,8 +54,7 @@ function boot(){
         php: 80
     });
 
-    //追加すると、イベントが発生します！
+    //追加すると、addイベントが発生します！
     scoreCollection.add(score);
-
-}
+});
 

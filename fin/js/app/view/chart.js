@@ -12,8 +12,8 @@
         initialize: function() {
 
             //モデルのイベント監視
-            this.listenTo(this.model, "change", this.render);
-            this.listenTo(this.model, "add", this.refreshChart);
+            this.listenTo(this.collection, "change", this.render);
+            this.listenTo(this.collection, "add", this.refreshChart);
 
             //初期の描画
             this.render();
@@ -34,7 +34,7 @@
                 [       '', 'JavaScript', 'C++', 'Ruby', 'PHP']
             ];
 
-            this.model.forEach(function(score){
+            this.collection.forEach(function(score){
                array.push([
                    score.get('name'),
                    score.get('js'),
@@ -50,7 +50,7 @@
 
         appendChart:function(array){
 
-            if(!this.model.size()) return;
+            if(!this.collection.size()) return;
 
             var data = google.visualization.arrayToDataTable(array);
 

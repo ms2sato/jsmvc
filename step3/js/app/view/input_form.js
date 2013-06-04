@@ -11,7 +11,7 @@
 
         events: {
             "click .addButton":   "addScore", //イベントと対象の要素を指定：呼ばれるメソッド
-            "click .clearButton": "clear" //Q2.2模範解答
+            "click .clearButton": "clear" //Q2模範解答
         },
 
         initialize: function() {
@@ -32,19 +32,21 @@
             score.on('change:name', function(score){
                 console.log('change:name:', score.get('name'));
             });
-            score.set('name', this.$('input[name=name]').val());
-            // Q2.1の模範解答
-            setInteger(score, 'js');
-            setInteger(score, 'cpp');
-            setInteger(score, 'ruby');
-            setInteger(score, 'php');
+
+            score.set({
+                name: this.$('input[name=name]').val(),
+                js: parseInt(this.$('input[name=js]').val()),
+                cpp: parseInt(this.$('input[name=cpp]').val()),
+                ruby: parseInt(this.$('input[name=ruby]').val()),
+                php: parseInt(this.$('input[name=php]').val())
+            });
 
             //値が追加された。addイベントが発火する
-            MVC.app.model.scoreCollection.add(score);
+            this.collection.add(score);
         },
 
 
-        // Q2.2の模範解答
+        // Q2の模範解答
         clear:function(){
             this.$('input[name=name]').val('');
             this.$('input[name=js]').val('');
