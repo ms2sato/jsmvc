@@ -19,7 +19,10 @@
             this.tableRowTpl = _.template(tableRowStr);
 
 
-            //モデルのイベント監視
+            /*
+             * モデルのイベント監視
+             * this.model.on('add', this.addNewRow, this)とほぼ同じ動きだが、remove時にリスナを自動解放してくれる
+             */
             this.listenTo(this.model, "add", this.addNewRow);
 
             //初期の描画
